@@ -5,9 +5,12 @@ import {
   deleteSong,
   createAlbum,
   deleteAlbum,
+  checkAdmin,
 } from "../controllers/admin.controller.js";
 
 const router = Router();
+
+router.get("/check", protectRoute, requireAdmin, checkAdmin);
 
 router.post("/songs", protectRoute, requireAdmin, createSong);
 router.delete("/delete/:id", protectRoute, requireAdmin, deleteSong);
